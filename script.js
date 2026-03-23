@@ -65,13 +65,23 @@ loginForm.addEventListener("submit", async (e) => {
   const email = document.getElementById("loginEmail").value.trim();
   const pass = document.getElementById("loginPass").value;
 
-  const { error } = await supabase.auth.signInWithPassword({
-    email,
-    password: pass,
-  });
-  loginMsg.textContent = error ? "Feil: " + error.message : "Innlogget ✅";
-  await refreshAuthUI();
-  if (!error) setTimeout(() => panel.classList.remove("open"), 400);
+  try {
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password: pass,
+    });
+    
+    if (error) {
+      loginMsg.textContent = "Feil: " + error.message;
+    } else {
+      loginMsg.textContent = "Innlogget ✅";
+      await refreshAuthUI();
+      setTimeout(() => panel.classList.remove("open"), 400);
+    }
+  } catch (err) {
+    loginMsg.textContent = "En feil oppstod: " + err.message;
+    console.error("Login exception:", err);
+  }
 });
 
 signupForm.addEventListener("submit", async (e) => {
@@ -84,21 +94,39 @@ signupForm.addEventListener("submit", async (e) => {
     .toLowerCase();
   const pass = document.getElementById("signupPass").value;
 
-  const { error } = await supabase.auth.signUp({
-    email,
-    password: pass,
-    options: { data: { display_name: name } },
-  });
+  try {
+    const { error } = await supabase.auth.signUp({
+      email,
+      password: pass,
+      options: { data: { display_name: name } },
+    });
 
-  signupMsg.textContent = error
-    ? "Feil: " + error.message
-    : "Konto opprettet ✅ Sjekk e-posten din for bekreftelse!.";
+    signupMsg.textContent = error
+      ? "Feil: " + error.message
+      : "Konto opprettet ✅ Sjekk e-posten din for bekreftelse!.";
+  } catch (err) {
+    signupMsg.textContent = "En feil oppstod: " + err.message;
+    console.error("Signup exception:", err);
+  }
 });
 
 document.getElementById("logoutBtn").addEventListener("click", async () => {
-  await supabase.auth.signOut();
+  try {
+    await supabase.auth.signOut();
+  } catch (err) {
+    console.error("SignOut exception:", err);
+  }
+  
+  // Tøm feltene når du logger ut slik at neste innlogging er "ren"
+  document.getElementById("loginEmail").value = "";
+  document.getElementById("loginPass").value = "";
+  loginMsg.textContent = "";
+  
   await refreshAuthUI();
 });
 
-supabase.auth.onAuthStateChange(() => refreshAuthUI());
+supabase.auth.onAuthStateChange(() => {
+  refreshAuthUI();
+});
+
 refreshAuthUI();
