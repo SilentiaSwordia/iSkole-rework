@@ -2,7 +2,7 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 /** 1) Koble til Supabase (BYTT til dine nøkler) */
 const supabase = createClient(
-  "https://ahkcefozgmvuzqamowuau.supabase.co",
+  "https://ahkcefozgmvzqamouwau.supabase.co",
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFoa2NlZm96Z212enFhbW91d2F1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQyNjYyODEsImV4cCI6MjA4OTg0MjI4MX0.ZkZSxJ6F8ewwoQpWbXhC69cXldVG-6Dswvqzl7jHjHc",
 );
 
