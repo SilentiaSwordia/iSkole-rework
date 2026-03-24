@@ -2,6 +2,10 @@
 :root {
   --bg-color: #ffffff;
   --text-color: #000000;
+  background-image: url(iskole_background_clean_copy.png);
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* Dark Theme styles applied automatically when the system prefers dark mode */
@@ -14,7 +18,7 @@
 
 /* General styles using the variables */
 body {
-  background-color: var(--bg-color);
+  /* background-color: var(--bg-color); */
   /* Add a smooth transition for theme switching */
   max-width: 80%;
   margin: 0 auto;
@@ -27,11 +31,12 @@ body {
   font-family: "Arial", sans-serif;
   font-size: 5rem;
   font-weight: lighter;
+  color: #ffffff;
 }
 
 .welcome-text {
-  background-color: var(--text-color);
-  color: var(--bg-color);
+  background-color: #ffffff;
+  color: #000000;
   padding-top: 1%;
   padding-bottom: 1%;
   padding-left: 1%;
@@ -45,16 +50,14 @@ body {
   font-family: "Arial", sans-serif;
   font-size: 1rem;
   font-weight: bolder !important;
-  background-color: var(--text-color);
-  color: var(--bg-color);
+  color: #000000;
 }
 
 .welcome-text-text {
   font-family: "Arial", sans-serif;
   font-size: 1rem;
   font-weight: lighter;
-  background-color: var(--text-color);
-  color: var(--bg-color);
+  color: #000000;
 }
 
 .login-buttons {
