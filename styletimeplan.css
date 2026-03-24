@@ -1,0 +1,27 @@
+/* Default (Light) Theme using CSS Variables */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  background-image: url(iskole_background_clean_copy.png);
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Dark Theme styles applied automatically when the system prefers dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #121212; /* A dark gray is often better than pure black */
+    --text-color: #e0e0e0; /* A light gray is often better than pure white */
+  }
+}
+
+/* General styles using the variables */
+body {
+  /* Add a smooth transition for theme switching */
+  max-width: 80%;
+  margin: 0 auto;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}

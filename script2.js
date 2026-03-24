@@ -22,3 +22,7 @@ window
       // You can add JS logic here to update your theme if needed
     }
   });
+
+document.getElementById("loginBtn").addEventListener("click", () => {
+  window.location.href = "timeplan.html";
+});

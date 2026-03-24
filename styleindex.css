@@ -18,7 +18,6 @@
 
 /* General styles using the variables */
 body {
-  /* background-color: var(--bg-color); */
   /* Add a smooth transition for theme switching */
   max-width: 80%;
   margin: 0 auto;
