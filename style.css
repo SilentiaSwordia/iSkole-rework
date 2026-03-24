@@ -1,37 +1,29 @@
-/* Base */
-html,
-body {
-  height: 100%;
-}
-body {
-  font-family: system-ui, sans-serif;
-  background: #f7f9fc;
-  color: #111;
-  margin: 0;
+/* Default (Light) Theme using CSS Variables */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
 }
 
-/* Auth-panel */
-.auth-panel {
-  position: fixed;
-  top: 0;
-  right: 0;
-  height: 100vh;
-  width: 340px;
-  max-width: 90vw;
-  background: #fff;
-  border-left: 1px solid #e9ecef;
-  box-shadow: -10px 0 24px rgba(0, 0, 0, 0.08);
-  transform: translateX(100%);
-  transition: transform 0.25s ease;
-  z-index: 1200;
-}
-.auth-panel.open {
-  transform: translateX(0);
+/* Dark Theme styles applied automatically when the system prefers dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #121212; /* A dark gray is often better than pure black */
+    --text-color: #e0e0e0; /* A light gray is often better than pure white */
+  }
 }
 
-.card-hover {
-  transition: box-shadow 0.2s ease;
+/* General styles using the variables */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  /* Add a smooth transition for theme switching */
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
-.card-hover:hover {
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08);
+
+.text-logo {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
 }
