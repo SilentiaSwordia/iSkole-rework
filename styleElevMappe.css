@@ -598,7 +598,6 @@ body {
   padding: 8px 0;
 }
 
-.user-profile:hover .profile-dropdown,
 .user-profile.active .profile-dropdown {
   opacity: 1;
   visibility: visible;

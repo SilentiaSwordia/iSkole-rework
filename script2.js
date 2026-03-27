@@ -102,6 +102,26 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
     }
+
+    // --- Logikk for Profile Dropdown (Top Navigation) ---
+    const userProfile = document.querySelector('.user-profile');
+    if (userProfile) {
+        userProfile.addEventListener('click', (e) => {
+            // Unngå at klikk inne i selve dropdown-lenkene også lukker den hvis de evt har prevetDefault
+            // (men vi vil at lenkene inni skal fungere som normalt, så sjekker at vi ikke klikker på dropdown)
+            if (!e.target.closest('.profile-dropdown')) {
+                userProfile.classList.toggle('active');
+            }
+            e.stopPropagation();
+        });
+
+        // Lukk dropdown når man klikker hvor som helst utenfor
+        document.addEventListener('click', (e) => {
+            if (!userProfile.contains(e.target)) {
+                userProfile.classList.remove('active');
+            }
+        });
+    }
 });
 
 // Funksjon for å lagre rekkefølgen og innoldet av kortene midlertidig (i brukerens nettleser)
