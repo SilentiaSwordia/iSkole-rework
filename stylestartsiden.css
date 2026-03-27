@@ -22,6 +22,13 @@
   --tabs-bg: #ffffff;
   --user-hover-bg: #f0f0f0;
   
+  /* Dashboard Colors */
+  --card-bg: #ffffff;
+  --card-border: #e8e8e8;
+  --block-bg: #dcedc8;
+  --block-text: #1b4d2e;
+  --timeline-line: #e0e0e0;
+
   /* Layout */
   --transition-speed: 0.2s;
 }
@@ -44,6 +51,13 @@
     --bg-color: #121212;
     --tabs-bg: #242424;
     --user-hover-bg: #383838;
+
+    /* Dashboard Dark Mode Colors */
+    --card-bg: #1e1e1e;
+    --card-border: #333333;
+    --block-bg: #2a4132;
+    --block-text: #a8e0bb;
+    --timeline-line: #3a3a3a;
   }
 }
 
@@ -392,8 +406,288 @@ body {
   overflow: auto;
 }
 
-.content-placeholder {
-  width: 100%;
-  height: 100%;
-  background-color: transparent;
+/* =========================================
+   Dashboard Widgets
+   ========================================= */
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  max-width: 1400px;
+}
+
+.dashboard-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Drag and Drop Styling */
+.sortable-handle {
+  cursor: grab;
+}
+
+.sortable-handle:active {
+  cursor: grabbing;
+}
+
+.sortable-ghost {
+  opacity: 0.4;
+  background-color: var(--user-hover-bg);
+  border: 2px dashed var(--brand-orange);
+}
+
+.card-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--card-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.btn-dark {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+@media (prefers-color-scheme: dark) {
+  .btn-dark {
+    background-color: #444;
+  }
+  .btn-dark:hover {
+    background-color: #555;
+  }
+}
+
+.btn-dark:hover {
+  background-color: #111;
+}
+
+.btn-icon {
+  background: none;
+  border: none;
+  color: var(--brand-orange);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.card-body {
+  padding: 0;
+}
+
+/* --- Timeplan Widget --- */
+.timeplan-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.days-header {
+  display: flex;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.day {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 0;
+  font-size: 13px;
+  color: var(--text-secondary);
+  border-right: 1px solid var(--card-border);
+}
+
+.day:last-child {
+  border-right: none;
+}
+
+.day.active {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.date {
+  margin-top: 4px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.day.active .date-circle {
+  background-color: #3498db;
+  color: white;
+}
+
+.timeline-container {
+  position: relative;
+  padding: 0 0 20px 0;
+}
+
+.timeline-row {
+  display: flex;
+  min-height: 60px;
+}
+
+.time-label {
+  width: 60px;
+  text-align: right;
+  padding-right: 12px;
+  font-size: 11px;
+  color: var(--text-secondary);
+  padding-top: 10px;
+}
+
+.whole-day .time-label {
+  padding-top: 4px;
+  line-height: 1.2;
+}
+
+.time-content {
+  flex: 1;
+  border-top: 1px solid var(--timeline-line);
+  position: relative;
+  margin-right: 20px;
+}
+
+.border-bottom-double {
+  border-bottom: 2px solid var(--timeline-line);
+  min-height: 30px;
+}
+
+.timeline-row:first-child .time-content {
+  border-top: none;
+}
+
+.class-block {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border-left: 3px solid #2e7d32;
+  font-size: 11px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  margin-right: 8px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .class-block {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  }
+}
+
+.green-theme {
+  background-color: var(--block-bg);
+  color: var(--block-text);
+  border-left-color: #4caf50;
+}
+
+.class-title { 
+  font-weight: 700; 
+  margin-bottom: 2px;
+}
+
+.class-teacher { 
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  font-size: 10px; 
+  opacity: 0.9;
+}
+
+.class-time { 
+  font-size: 10px; 
+  opacity: 0.8;
+}
+
+.current-time-line {
+  position: absolute;
+  left: 60px;
+  right: 20px;
+  height: 2px;
+  background-color: #3498db;
+  z-index: 10;
+}
+
+.current-time-label {
+  position: absolute;
+  left: -38px;
+  top: -8px;
+  color: #3498db;
+  font-size: 11px;
+  font-weight: 700;
+  background-color: var(--card-bg);
+  padding: 0 4px;
+}
+
+/* --- Oversikt Widget --- */
+.oversikt-grid {
+  display: flex;
+  gap: 20px;
+  padding: 24px;
+}
+
+.oversikt-item {
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 16px;
+  width: 170px;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-speed);
+}
+
+.oversikt-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.item-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.item-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.icon-orange {
+  color: var(--brand-orange);
+  font-size: 36px;
+  filter: drop-shadow(0px 2px 2px rgba(243, 139, 54, 0.3));
+}
+
+.item-count {
+  font-size: 26px;
+  font-weight: 700;
+  color: #3498db;
+  font-style: italic;
 }
