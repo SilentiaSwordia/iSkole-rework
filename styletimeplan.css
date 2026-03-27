@@ -397,3 +397,83 @@ body {
   height: 100%;
   background-color: transparent;
 }
+
+/* =========================================
+   Profile Dropdown Styling
+   ========================================= */
+.user-profile {
+  position: relative;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all var(--transition-speed);
+  z-index: 1000;
+  padding: 8px 0;
+}
+
+.user-profile:hover .profile-dropdown,
+.user-profile.active .profile-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.profile-dropdown a {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color var(--transition-speed);
+  gap: 12px;
+}
+
+.profile-dropdown a:hover {
+  background-color: var(--user-hover-bg);
+}
+
+.profile-dropdown .fa-cog {
+  font-size: 16px;
+  color: var(--text-secondary);
+  width: 20px;
+  text-align: center;
+}
+
+.theme-icon-light {
+    display: block;
+}
+.theme-icon-dark {
+    display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+    .theme-icon-light {
+        display: none;
+    }
+    .theme-icon-dark {
+        display: block;
+    }
+}
+
+.logout-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+

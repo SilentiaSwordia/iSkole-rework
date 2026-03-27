@@ -87,6 +87,15 @@
                         <i class="fa-solid fa-circle-user profile-icon"></i>
                         <span class="user-name">Joachim Ramberg Langholen</span>
                         <i class="fa-solid fa-chevron-down dropdown-icon"></i>
+
+                        <div class="profile-dropdown">
+                            <a href="innstillinger.html"><i class="fa-solid fa-cog"></i> Innstillinger</a>
+                            <a href="index.html">
+                                <img src="login-xxl-light.png" alt="Logg ut" class="logout-icon theme-icon-dark">
+                                <img src="login-xxl-dark.png" alt="Logg ut" class="logout-icon theme-icon-light">
+                                Logg ut
+                            </a>
+                        </div>
                     </div>
                 </div>
             </header>
@@ -338,7 +347,7 @@
             </main>
         </div>
     </div>
-    
+
     <!-- Scroll to top button -->
     <button id="scrollToTopBtn" class="scroll-to-top" aria-label="Scroll til toppen" title="Scroll til toppen">
         <i class="fa-solid fa-arrow-up"></i> To the top
@@ -347,8 +356,8 @@
         document.addEventListener("DOMContentLoaded", () => {
             const scrollArea = document.getElementById('mainContentArea');
             const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-            const topbarHeight = 56; 
-            
+            const topbarHeight = 56;
+
             if (scrollArea && scrollToTopBtn) {
                 scrollArea.addEventListener('scroll', () => {
                     if (scrollArea.scrollTop > topbarHeight) {
