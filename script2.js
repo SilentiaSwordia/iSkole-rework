@@ -23,6 +23,24 @@ window
     }
   });
 
-document.getElementById("loginBtn").addEventListener("click", () => {
-  window.location.href = "timeplan.html";
+const loginBtn = document.getElementById("loginBtn");
+if (loginBtn) {
+  loginBtn.addEventListener("click", () => {
+    window.location.href = "timeplan.html";
+  });
+}
+
+// Dropdown functionality for sidebar menus
+document.addEventListener("DOMContentLoaded", () => {
+    const dropdownToggles = document.querySelectorAll(".has-dropdown > a");
+    
+    dropdownToggles.forEach(toggle => {
+        toggle.addEventListener("click", (e) => {
+            e.preventDefault(); // Prevent href="#" from jumping to top
+            
+            // Toggle class 'dropdown-open' on the parent <li> element
+            const parentLi = toggle.parentElement;
+            parentLi.classList.toggle("dropdown-open");
+        });
+    });
 });
