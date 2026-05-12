@@ -25,6 +25,24 @@ if (loginBtn) {
   });
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+    const sidebar = document.querySelector('.sidebar');
+    const closeBtn = document.querySelector('.fa-times' && '.sidebar-actions .fa-times');
+    const menuToggle = document.querySelector('.menu-toggle');
+
+    if (closeBtn && sidebar) {
+        closeBtn.addEventListener('click', () => {
+            sidebar.classList.toggle("closed");
+        });
+    }
+
+    if (menuToggle && sidebar) {
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle("closed");
+        });
+    }
+});
+
 // Funksjonalitet for sidemenyen (når nettsiden er ferdig lastet)
 document.addEventListener("DOMContentLoaded", () => {
     // Finner alle lenker i menyvinduet som har en nedtrekksmeny (dropdown)

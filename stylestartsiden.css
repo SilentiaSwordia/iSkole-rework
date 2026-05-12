@@ -94,6 +94,8 @@ body {
   flex-shrink: 0;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
   z-index: 100;
+  transition: width 0.25s ease, transform 0.25s ease, opacity 0.25s ease;
+  will-change: width, transform, opacity;
 }
 
 .sidebar-header {
@@ -191,6 +193,14 @@ body {
   color: #cccccc;
 }
 
+.sidebar.closed {
+  transform: translateX(-100%);
+  width: 0;
+  min-width: 0;
+  overflow: hidden;
+  opacity: 0;
+}
+
 /* =========================================
    Sub-menu Styling
    ========================================= */
@@ -243,6 +253,8 @@ body {
   flex-direction: column;
   min-width: 0;
   background-color: var(--bg-color);
+  transition: margin 0.25s ease;
+  min-width: 0;
 }
 
 /* =========================================
@@ -417,6 +429,13 @@ body {
   max-width: 1400px;
 }
 
+.settings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  max-width: 1400px;
+}
+
 .dashboard-card {
   background-color: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -424,6 +443,147 @@ body {
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
   display: flex;
   flex-direction: column;
+}
+
+.settings-card {
+  padding: 0;
+}
+
+.settings-card-inner {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.card-title-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.settings-card-icon {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(52, 152, 219, 0.12);
+  color: #1a6fa5;
+  font-size: 18px;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  background-color: #f4f4f4;
+  color: var(--text-secondary);
+}
+
+.status-pill.status-inactive {
+  background-color: #fcebea;
+  color: #a12828;
+}
+
+.status-pill.status-warning {
+  background-color: #fff4e5;
+  color: #9f5813;
+}
+
+.settings-card-text,
+.password-notes p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.settings-card-body {
+  display: grid;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.settings-input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+}
+
+.settings-input::placeholder {
+  color: var(--text-secondary);
+}
+
+.password-rules {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.password-rule {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.password-rule i {
+  width: 18px;
+  text-align: center;
+}
+
+.settings-card-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn-secondary {
+  background-color: #f4f4f4;
+  color: var(--text-primary);
+  border: 1px solid #d8d8d8;
+}
+
+.btn-secondary:hover {
+  background-color: #e6e6e6;
+}
+
+.btn-block {
+  width: 100%;
+  max-width: 280px;
+}
+
+.settings-notification-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (max-width: 780px) {
+  .settings-card-footer {
+    justify-content: stretch;
+  }
+  .btn-block {
+    max-width: 100%;
+  }
 }
 
 /* Drag and Drop Styling */
