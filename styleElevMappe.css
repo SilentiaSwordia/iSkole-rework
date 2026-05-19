@@ -22,6 +22,7 @@
   --tabs-bg: #ffffff;
   --user-hover-bg: #f0f0f0;
   --card-border: #e8e8e8;
+  --card-bg: #ffffff;
 
   /* Layout */
   --transition-speed: 0.2s;
@@ -46,6 +47,7 @@
     --tabs-bg: #242424;
     --user-hover-bg: #383838;
     --card-border: #333333;
+    --card-bg: #1e1e1e;
   }
 }
 

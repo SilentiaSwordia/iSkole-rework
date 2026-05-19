@@ -14,6 +14,7 @@
   --topbar-border: #e0e0e0;
   --topbar-height: 56px;
   --card-border: #e8e8e8;
+  --card-bg: #ffffff;
 
   /* Global Colors */
   --brand-orange: #f38b36;
@@ -46,6 +47,7 @@
     --tabs-bg: #242424;
     --user-hover-bg: #383838;
     --card-border: #333333;
+    --card-bg: #1e1e1e;
   }
 }
 
