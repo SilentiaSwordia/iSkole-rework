@@ -13,8 +13,12 @@
       <div class="logo">
         <h1 class="text-logo">ISKOLE - ANSATT</h1>
       </div>
-      <div class="filler-div">INGENTING</div>
-      <div></div>
+      <div class="auth-switch">
+        <button type="button" class="tab-button active" id="showLogin">
+          Login
+        </button>
+        <button type="button" class="tab-button" id="showSignup">Signup</button>
+      </div>
       <div class="login-panel" id="authPanel">
         <form id="loginForm" class="login-form">
           <div class="form-group">
@@ -35,13 +39,43 @@
           <button type="button" class="btn-login">
             <p class="btn-text">Logg inn med passnøkkel</p>
           </button>
+          <div style="display: flex; justify-content: center">
+            <p class="nytt-passord">Glemt passord?</p>
+          </div>
+          <div style="display: flex; justify-content: left">
+            <a href="index.html" class="nytt-passord">Tilbake til forsiden</a>
+          </div>
         </form>
-        <div style="display: flex; justify-content: center">
-          <p class="nytt-passord">Glemt passord?</p>
-        </div>
-        <div style="display: flex; justify-content: left">
-          <a href="index.html" class="nytt-passord">Tilbake til forsiden</a>
-        </div>
+
+        <form id="signupForm" class="login-form hidden">
+          <div class="form-group">
+            <label for="signupName"></label>
+            <input type="text" id="signupName" placeholder="Fullt navn" />
+          </div>
+          <div class="form-group">
+            <label for="signupEmail"></label>
+            <input type="email" id="signupEmail" placeholder="E-post" />
+          </div>
+          <div class="form-group">
+            <label for="signupPass"></label>
+            <input type="password" id="signupPass" placeholder="Passord" />
+          </div>
+          <div class="form-group">
+            <label for="signupConfirm"></label>
+            <input
+              type="password"
+              id="signupConfirm"
+              placeholder="Bekreft passord"
+            />
+          </div>
+          <p id="signupMsg" class="msg"></p>
+          <button type="button" class="btn-login" id="signupBtn">
+            <p class="btn-text">Registrer</p>
+          </button>
+          <div style="display: flex; justify-content: left">
+            <a href="index.html" class="nytt-passord">Tilbake til forsiden</a>
+          </div>
+        </form>
       </div>
     </div>
     <script src="script2.js"></script>
