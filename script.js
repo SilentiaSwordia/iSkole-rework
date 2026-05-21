@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFoa2NlZm96Z212enFhbW91d2F1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQyNjYyODEsImV4cCI6MjA4OTg0MjI4MX0.ZkZSxJ6F8ewwoQpWbXhC69cXldVG-6Dswvqzl7jHjHc",
   );
 
+  const logoutBtn = document.getElementById("logoutBtn");
   const panel = document.getElementById("authPanel");
   const openBtn = document.getElementById("authOpenBtn");
   const closeBtn = document.getElementById("authCloseBtn");
@@ -144,6 +145,20 @@ document.addEventListener("DOMContentLoaded", () => {
   supabase.auth.onAuthStateChange(() => {
     refreshAuthUI();
   });
+
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", async (e) => {
+      e.preventDefault();
+      try {
+        await supabase.auth.signOut();
+        await refreshAuthUI();
+        window.location.href = "index.html";
+      } catch (err) {
+        console.error("Logout error:", err);
+        alert("Kunne ikke logge ut. Sjekk konsollen.");
+      }
+    });
+  }
 
   refreshAuthUI();
 
