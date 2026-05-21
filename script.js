@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (res.error) {
           signupMsg.textContent = "Feil: " + res.error.message;
         } else {
-          signupMsg.textcontent =
+          signupMsg.textContent =
             "Konto opprettet ✅ Sjekk e-posten din for bekreftelse!.";
         }
       } catch (err) {
