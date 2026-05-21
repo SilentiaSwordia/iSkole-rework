@@ -95,10 +95,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (error) {
         loginMsg.textContent = "Feil: " + error.message;
-      } else {
+      } else if (!error) {
         loginMsg.textContent = "Innlogget ✅";
-        await refreshAuthUI();
-        setTimeout(() => panel.classList.remove("open"), 400);
+        window.location.href = "startsiden.html";
       }
     } catch (err) {
       loginMsg.textContent = "En feil oppstod: " + err.message;
