@@ -20,8 +20,8 @@ const signupForm = document.getElementById("signupForm");
 const loginMsg = document.getElementById("loginMsg");
 const signupMsg = document.getElementById("signupMsg");
 
-openBtn.addEventListener("click", () => panel.classList.add("open"));
-closeBtn.addEventListener("click", () => panel.classList.remove("open"));
+// openBtn.addEventListener("click", () => panel.classList.add("open"));
+// closeBtn.addEventListener("click", () => panel.classList.remove("open"));
 
 tabButtons.forEach((btn) => {
   btn.addEventListener("click", () => {
@@ -70,7 +70,7 @@ loginForm.addEventListener("submit", async (e) => {
       email,
       password: pass,
     });
-    
+
     if (error) {
       loginMsg.textContent = "Feil: " + error.message;
     } else {
@@ -116,12 +116,12 @@ document.getElementById("logoutBtn").addEventListener("click", async () => {
   } catch (err) {
     console.error("SignOut exception:", err);
   }
-  
+
   // Tøm feltene når du logger ut slik at neste innlogging er "ren"
   document.getElementById("loginEmail").value = "";
   document.getElementById("loginPass").value = "";
   loginMsg.textContent = "";
-  
+
   await refreshAuthUI();
 });
 

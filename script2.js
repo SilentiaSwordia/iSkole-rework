@@ -24,11 +24,11 @@ const showSignupBtn = document.getElementById("showSignup");
 const loginForm = document.getElementById("loginForm");
 const signupForm = document.getElementById("signupForm");
 
-if (loginBtn) {
-  loginBtn.addEventListener("click", () => {
-    window.location.href = "timeplan.html";
-  });
-}
+// if (loginBtn) {
+//   loginBtn.addEventListener("click", () => {
+//     window.location.href = "timeplan.html";
+//   });
+// }
 
 function setAuthMode(mode) {
   const isLogin = mode === "login";
