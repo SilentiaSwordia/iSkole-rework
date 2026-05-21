@@ -6,8 +6,6 @@
     <title>Innlogging Ansatte</title>
     <link href="stylelogin.css" rel="stylesheet" />
     <meta name="color-scheme" content="dark light" />
-    <script type="module" src="script.js"></script>
-    <script type="module" src="script2.js"></script>
   </head>
   <body>
     <div class="login-container">
@@ -21,6 +19,12 @@
         <button type="button" class="tab-button" id="showSignup">Signup</button>
       </div>
       <div class="login-panel" id="authPanel">
+        <div id="authLoggedOut" style="display: none"></div>
+        <div id="authLoggedIn" style="display: none">
+          <span id="authUserBadge"></span><span id="roleBadge"></span>
+          <div id="whoamI"></div>
+        </div>
+
         <form id="loginForm" class="login-form">
           <div class="form-group">
             <label for="loginEmail"></label>
@@ -71,6 +75,6 @@
         </form>
       </div>
     </div>
-    <script src="script2.js"></script>
+    <script type="module" src="script.js"></script>
   </body>
 </html>
