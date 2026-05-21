@@ -74,14 +74,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const { data: profile } = await supabase
       .from("profiles")
-      .select("role")
+      .select("role, display_name, email")
       .eq("id", user.id)
       .maybeSingle();
 
     const role = profile?.role ?? "user";
+    const displayName =
+      profile?.display_name || user.user_metadata?.display_name || user.email;
     loggedOut.style.display = "none";
     loggedIn.style.display = "";
-    whoami.textContent = `${user.email}`;
+    whoami.textContent = displayName;
     roleBadge.textContent = `Rolle: ${role}`;
     userBadge.textContent = role === "admin" ? "Admin" : "Innlogget";
   }
