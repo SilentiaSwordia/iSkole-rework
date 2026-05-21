@@ -42,6 +42,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const showLoginBtn = document.getElementById("showLogin");
   const showSignupBtn = document.getElementById("showSignup");
 
+  const hasAuthUi = loggedOut && loggedIn && whoami && roleBadge && userBadge;
+
   // openBtn.addEventListener("click", () => panel.classList.add("open"));
   // closeBtn.addEventListener("click", () => panel.classList.remove("open"));
 
@@ -60,6 +62,8 @@ document.addEventListener("DOMContentLoaded", () => {
       data: { user },
     } = await supabase.auth.getUser();
 
+    if (!hasAuthUi) return;
+
     if (!user) {
       loggedOut.style.display = "";
       loggedIn.style.display = "none";
@@ -76,60 +80,66 @@ document.addEventListener("DOMContentLoaded", () => {
     const role = profile?.role ?? "user";
     loggedOut.style.display = "none";
     loggedIn.style.display = "";
-    whoami.textContent = `Innlogget som ${user.email}`;
+    whoami.textContent = `${user.email}`;
     roleBadge.textContent = `Rolle: ${role}`;
     userBadge.textContent = role === "admin" ? "Admin" : "Innlogget";
   }
+  if (loginForm) {
+    loginForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      loginMsg.textContent = "Logger inn...";
+      const email = document.getElementById("loginEmail").value.trim();
+      const pass = document.getElementById("loginPass").value;
 
-  loginForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    loginMsg.textContent = "Logger inn...";
-    const email = document.getElementById("loginEmail").value.trim();
-    const pass = document.getElementById("loginPass").value;
+      try {
+        const { error } = await supabase.auth.signInWithPassword({
+          email,
+          password: pass,
+        });
 
-    try {
-      const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password: pass,
-      });
-
-      if (error) {
-        loginMsg.textContent = "Feil: " + error.message;
-      } else if (!error) {
-        loginMsg.textContent = "Innlogget ✅";
-        window.location.href = "startsiden.html";
+        if (error) {
+          loginMsg.textContent = "Feil: " + error.message;
+        } else if (!error) {
+          loginMsg.textContent = "Innlogget ✅";
+          window.location.href = "startsiden.html";
+        }
+      } catch (err) {
+        loginMsg.textContent = "En feil oppstod: " + err.message;
+        console.error("Login exception:", err);
       }
-    } catch (err) {
-      loginMsg.textContent = "En feil oppstod: " + err.message;
-      console.error("Login exception:", err);
-    }
-  });
+    });
+  }
 
-  signupForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    signupMsg.textContent = "Oppretter...";
-    const name = document.getElementById("signupName").value.trim();
-    const email = document
-      .getElementById("signupEmail")
-      .value.trim()
-      .toLowerCase();
-    const pass = document.getElementById("signupPass").value;
+  if (signupForm) {
+    signupForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      signupMsg.textContent = "Oppretter...";
+      const name = document.getElementById("signupName").value.trim();
+      const email = document
+        .getElementById("signupEmail")
+        .value.trim()
+        .toLowerCase();
+      const pass = document.getElementById("signupPass").value;
 
-    try {
-      const { error } = await supabase.auth.signUp({
-        email,
-        password: pass,
-        options: { data: { display_name: name } },
-      });
-
-      signupMsg.textContent = error
-        ? "Feil: " + error.message
-        : "Konto opprettet ✅ Sjekk e-posten din for bekreftelse!.";
-    } catch (err) {
-      signupMsg.textContent = "En feil oppstod: " + err.message;
-      console.error("Signup exception:", err);
-    }
-  });
+      try {
+        const res = await supabase.auth.signUp({
+          email,
+          password: pass,
+          options: { data: { display_name: name } },
+        });
+        console.log("supabase.signUp result:", res);
+        if (res.error) {
+          signupMsg.textContent = "Feil: " + res.error.message;
+        } else {
+          signupMsg.textcontent =
+            "Konto opprettet ✅ Sjekk e-posten din for bekreftelse!.";
+        }
+      } catch (err) {
+        signupMsg.textContent = `"En feil oppstod: ${err?.message || err}"`;
+        console.error("Signup exception:", err);
+      }
+    });
+  }
 
   supabase.auth.onAuthStateChange(() => {
     refreshAuthUI();

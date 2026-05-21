@@ -21,8 +21,9 @@
       <div class="login-panel" id="authPanel">
         <div id="authLoggedOut" style="display: none"></div>
         <div id="authLoggedIn" style="display: none">
-          <span id="authUserBadge"></span><span id="roleBadge"></span>
-          <div id="whoamI"></div>
+          <span id="authUserBadge" style="display: none"></span
+          ><span id="roleBadge" style="display: none"></span>
+          <div id="whoami" style="display: none"></div>
         </div>
 
         <form id="loginForm" class="login-form">
@@ -36,7 +37,7 @@
             <input type="password" id="loginPass" placeholder="Passord" />
           </div>
           <p id="loginMsg" class="msg"></p>
-          <button type="button" class="btn-login" id="loginBtn">
+          <button type="submit" class="btn-login" id="loginBtn">
             <img src="login-xxl-dark.png" width="40" height="40" />
             <p class="btn-text">Logg inn</p>
           </button>
@@ -66,7 +67,7 @@
             <input type="password" id="signupPass" placeholder="Passord" />
           </div>
           <p id="signupMsg" class="msg"></p>
-          <button type="button" class="btn-login" id="signupBtn">
+          <button type="submit" class="btn-login" id="signupBtn">
             <p class="btn-text">Registrer</p>
           </button>
           <div style="display: flex; justify-content: left">
