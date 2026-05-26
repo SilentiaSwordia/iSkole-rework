@@ -63,29 +63,40 @@ document.addEventListener("DOMContentLoaded", () => {
       data: { user },
     } = await supabase.auth.getUser();
 
-    if (!hasAuthUi) return;
+    // Update navbar whoami element if it exists on the current page
+    if (user && whoami) {
+      // If we have metadata from a fresh signup/session, fall back on it immediately
+      const fallbackName = user.user_metadata?.display_name || user.email;
+      whoami.textContent = fallbackName;
 
-    if (!user) {
-      loggedOut.style.display = "";
-      loggedIn.style.display = "none";
-      userBadge.textContent = "";
-      return;
+      // Fetch profile data safely without breaking if fields are missing in UI
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("role, display_name")
+        .eq("id", user.id)
+        .maybeSingle();
+
+      if (profile) {
+        whoami.textContent = profile.display_name || fallbackName;
+        if (roleBadge)
+          roleBadge.textContent = `Rolle: ${profile.role ?? "user"}`;
+      }
     }
 
-    const { data: profile } = await supabase
-      .from("profiles")
-      .select("role, display_name, email")
-      .eq("id", user.id)
-      .maybeSingle();
+    // Handle page-specific UI visibility toggles dynamically
+    if (loggedOut && loggedIn) {
+      if (!user) {
+        loggedOut.style.display = "";
+        loggedIn.style.display = "none";
+      } else {
+        loggedOut.style.display = "none";
+        loggedIn.style.display = "";
+      }
+    }
 
-    const role = profile?.role ?? "user";
-    const displayName =
-      profile?.display_name || user.user_metadata?.display_name || user.email;
-    loggedOut.style.display = "none";
-    loggedIn.style.display = "";
-    whoami.textContent = displayName;
-    roleBadge.textContent = `Rolle: ${role}`;
-    userBadge.textContent = role === "admin" ? "Admin" : "Innlogget";
+    if (userBadge && user) {
+      userBadge.textContent = "Innlogget";
+    }
   }
   if (loginForm) {
     loginForm.addEventListener("submit", async (e) => {
