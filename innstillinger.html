@@ -1,196 +1,325 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="no">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Innstillinger - iSkole</title>
     <!-- Google Fonts: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <!-- SortableJS for drag-and-drop -->
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 
     <link href="stylestartsiden.css" rel="stylesheet" />
-    <script type="module" src="script2.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="app-container">
-        <!-- Sidebar -->
-        <nav class="sidebar">
-            <div class="sidebar-header">
-                <h2>Meny</h2>
-                <div class="sidebar-actions">
-                    <i class="fa-solid fa-thumbtack" title="Fest meny"></i>
-                    <i class="fa-solid fa-lock-open" title="Lås opp"></i>
-                    <i class="fa-solid fa-times" title="Lukk"></i>
-                </div>
-            </div>
-            <ul class="sidebar-menu">
-                <li class="active"><a href="startsiden.html"><i class="fa-solid fa-border-all"></i> Startsiden</a></li>
-                <li><a href="timeplan.html"><i class="fa-regular fa-calendar-days"></i> Timeplan</a></li>
-                <li><a href="fravær.html"><i class="fa-solid fa-user-xmark"></i> Fravær</a></li>
-                <li class="has-dropdown">
-                    <a href="#"><i class="fa-solid fa-gauge-high"></i> Vurderinger<i
-                            class="fa-solid fa-chevron-right dropdown-arrow"></i></a>
-                    <ul class="sub-menu">
-                        <li><a href="prøver.html">Prøver</a></li>
-                        <li><a href="enkeltvurderinger.html">Enkeltvurderinger</a></li>
-                        <li><a href="egenvurderinger.html">Egenvurderinger</a></li>
-                        <li><a href="karakterer.html">Karakterer</a></li>
-                        <li><a href="ordenOgOppførsel.html">Orden/Oppførsel</a></li>
-                        <li><a href="eksamen.html">Eksamen</a></li>
-                    </ul>
-                </li>
-                <li><a href="meldinger.html"><i class="fa-regular fa-comments"></i> Meldinger</a></li>
-                <li><a href="oppslagstavle.html"><i class="fa-solid fa-thumbtack"></i> Oppslagstavle</a></li>
-                <li class="has-dropdown">
-                    <a href="#"><i class="fa-regular fa-folder-open"></i> Dokumenter<i
-                            class="fa-solid fa-chevron-right dropdown-arrow"></i></a>
-                    <ul class="sub-menu">
-                        <li><a href="mineDokumenter.html">Mine dokumenter</a></li>
-                        <li><a href="deltMedMeg.html">Delt med meg</a></li>
-                        <li><a href="elevMappe.html">Elevmappe</a></li>
-                    </ul>
-                </li>
-                <li><a href="personalia.html"><i class="fa-regular fa-user"></i> Personalia</a></li>
-                <li><a href="samtykke.html"><i class="fa-solid fa-handshake"></i> Samtykke</a></li>
-                <li><a href="skolerute.html"><i class="fa-regular fa-calendar-check"></i> Skolerute</a></li>
-                <li><a href="arsUkeplan.html"><i class="fa-solid fa-list-ul"></i> Års-/ukeplan</a></li>
-                <li><a href="elevsamtaler.html"><i class="fa-regular fa-message"></i> Elevsamtaler</a></li>
-                <li><a href="fagsamtaler.html"><i class="fa-regular fa-comments"></i> Fagsamtaler</a></li>
-                <li><a href="soknader.html"><i class="fa-regular fa-file-lines"></i> Søknader</a></li>
-                <li><a href="info.html"><i class="fa-solid fa-circle-info"></i> Info</a></li>
-            </ul>
-        </nav>
-
-        <!-- Main Content Area -->
-        <div class="main-content">
-            <!-- Topbar -->
-            <header class="topbar">
-                <div class="topbar-left">
-                    <button class="menu-toggle"><i class="fa-solid fa-bars"></i></button>
-                    <div class="logo">
-                        <span class="logo-icon"><img src="akademiet.png" alt="Akademiet Drammen"
-                                style="width:100px; height:40px;"></span>
-                    </div>
-                </div>
-
-                <div class="topbar-center">
-                    <h1>Innstillinger</h1>
-                </div>
-
-                <div class="topbar-right">
-                    <div class="user-profile">
-                        <i class="fa-solid fa-circle-user profile-icon"></i>
-                        <span class="user-name">Joachim Ramberg Langholen</span>
-                        <i class="fa-solid fa-chevron-down dropdown-icon"></i>
-
-                        <div class="profile-dropdown">
-                            <a href="innstillinger.html"><i class="fa-solid fa-cog"></i> Innstillinger</a>
-                            <a href="index.html">
-                                <img src="login-xxl-light.png" alt="Logg ut" class="logout-icon theme-icon-dark">
-                                <img src="login-xxl-dark.png" alt="Logg ut" class="logout-icon theme-icon-light">
-                                Logg ut
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </header>
-
-            <main class="content-area">
-                <div class="settings-grid">
-
-                    <section class="dashboard-card settings-card">
-                        <div class="settings-card-inner">
-                            <div class="card-title-row">
-                                <div class="settings-card-icon">
-                                    <i class="fa-solid fa-shield-halved"></i>
-                                </div>
-                                <div>
-                                    <h2>To-faktorpålogging</h2>
-                                    <div class="status-pill status-inactive">Ikke aktivert</div>
-                                </div>
-                            </div>
-                            <p class="settings-card-text">To-faktorpålogging gir ekstra sikkerhet ved innlogging. Vi anbefaler å aktivere det for å beskytte kontoen din.</p>
-                            <button class="btn-dark btn-block">Opprett to-faktorkode...</button>
-                        </div>
-                    </section>
-
-                    <section class="dashboard-card settings-card">
-                        <div class="settings-card-inner">
-                            <div class="card-title-row">
-                                <h2>Endre passord</h2>
-                            </div>
-                            <div class="settings-card-body">
-                                <div class="form-group">
-                                    <label for="currentPassword">Nåværende passord *</label>
-                                    <input id="currentPassword" type="password" class="settings-input" placeholder="Skriv inn nåværende passord" />
-                                </div>
-                                <div class="form-group">
-                                    <label for="newPassword">Nytt passord</label>
-                                    <input id="newPassword" type="password" class="settings-input" placeholder="Skriv inn nytt passord" />
-                                </div>
-                                <div class="form-group">
-                                    <label for="confirmPassword">Gjenta nytt passord</label>
-                                    <input id="confirmPassword" type="password" class="settings-input" placeholder="Gjenta nytt passord" />
-                                </div>
-                                <div class="password-notes">
-                                    <p>Passordet må inneholde:</p>
-                                    <ul class="password-rules">
-                                        <li class="password-rule"><i class="fa-solid fa-circle-xmark"></i> Ett tall</li>
-                                        <li class="password-rule"><i class="fa-solid fa-circle-xmark"></i> Ett spesialtegn</li>
-                                        <li class="password-rule"><i class="fa-solid fa-circle-xmark"></i> Minst åtte tegn</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="settings-card-footer">
-                                <button class="btn-secondary">Avbryt</button>
-                                <button class="btn-dark">Endre</button>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section class="dashboard-card settings-card">
-                        <div class="settings-card-inner">
-                            <div class="card-title-row">
-                                <div class="settings-card-icon">
-                                    <i class="fa-solid fa-key"></i>
-                                </div>
-                                <h2>Passnøkler</h2>
-                            </div>
-                            <p class="settings-card-text">Man kan lagre en passnøkkel for enklere innlogging på iSkole. Denne kan lagres på enheten etter innlogging og vil være et raskt og sikkert alternativ til innlogging med to-faktor.</p>
-                            <p class="settings-card-text">Ulike enheter (telefon, pc, etc.) har ulike måter å beskytte passnøklene. Dette kan for eksempel være fingeravtrykk, ansiktsgjenkjenning eller passord.</p>
-                            <p class="settings-card-text">Produsenter har ulike måter å synkronisere passnøkler mellom brukerens enheter. F.eks. vil brukere av Mac og iPhone kunne få sine nøkler synkronisert gjennom iCloud.</p>
-                            <button class="btn-dark btn-block">Lagre passnøkkel...</button>
-                        </div>
-                    </section>
-
-                    <section class="dashboard-card settings-card">
-                        <div class="settings-card-inner">
-                            <div class="card-title-row">
-                                <div class="settings-card-icon">
-                                    <i class="fa-solid fa-bell"></i>
-                                </div>
-                                <h2>Varslinger</h2>
-                            </div>
-                            <p class="settings-card-text">Varslinger er korte meldinger som sendes til brukere via nettleseren eller mobilappen. Du kan tillate varslinger for å bli varslet når du får en ny melding i iSkole uten å være aktivt tilstede i nettleseren/applikasjonen.</p>
-                            <p class="settings-card-text">Obs! For å motta varslinger på iOS (iPhone) må iSkole være lagt til på "Hjem-skjerm".</p>
-                            <div class="settings-notification-status">
-                                <span class="status-pill status-warning">Status: Ikke sjekket</span>
-                            </div>
-                            <button class="btn-dark btn-block">Se status</button>
-                        </div>
-                    </section>
-
-                </div>
-            </main>
+      <!-- Sidebar -->
+      <nav class="sidebar">
+        <div class="sidebar-header">
+          <h2>Meny</h2>
+          <div class="sidebar-actions">
+            <i class="fa-solid fa-thumbtack" title="Fest meny"></i>
+            <i class="fa-solid fa-lock-open" title="Lås opp"></i>
+            <i class="fa-solid fa-times" title="Lukk"></i>
+          </div>
         </div>
-    </div>
-</body>
+        <ul class="sidebar-menu">
+          <li class="active">
+            <a href="startsiden.html"
+              ><i class="fa-solid fa-border-all"></i> Startsiden</a
+            >
+          </li>
+          <li>
+            <a href="timeplan.html"
+              ><i class="fa-regular fa-calendar-days"></i> Timeplan</a
+            >
+          </li>
+          <li>
+            <a href="fravær.html"
+              ><i class="fa-solid fa-user-xmark"></i> Fravær</a
+            >
+          </li>
+          <li class="has-dropdown">
+            <a href="#"
+              ><i class="fa-solid fa-gauge-high"></i> Vurderinger<i
+                class="fa-solid fa-chevron-right dropdown-arrow"
+              ></i
+            ></a>
+            <ul class="sub-menu">
+              <li><a href="prøver.html">Prøver</a></li>
+              <li><a href="enkeltvurderinger.html">Enkeltvurderinger</a></li>
+              <li><a href="egenvurderinger.html">Egenvurderinger</a></li>
+              <li><a href="karakterer.html">Karakterer</a></li>
+              <li><a href="ordenOgOppførsel.html">Orden/Oppførsel</a></li>
+              <li><a href="eksamen.html">Eksamen</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="meldinger.html"
+              ><i class="fa-regular fa-comments"></i> Meldinger</a
+            >
+          </li>
+          <li>
+            <a href="oppslagstavle.html"
+              ><i class="fa-solid fa-thumbtack"></i> Oppslagstavle</a
+            >
+          </li>
+          <li class="has-dropdown">
+            <a href="#"
+              ><i class="fa-regular fa-folder-open"></i> Dokumenter<i
+                class="fa-solid fa-chevron-right dropdown-arrow"
+              ></i
+            ></a>
+            <ul class="sub-menu">
+              <li><a href="mineDokumenter.html">Mine dokumenter</a></li>
+              <li><a href="deltMedMeg.html">Delt med meg</a></li>
+              <li><a href="elevMappe.html">Elevmappe</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="personalia.html"
+              ><i class="fa-regular fa-user"></i> Personalia</a
+            >
+          </li>
+          <li>
+            <a href="samtykke.html"
+              ><i class="fa-solid fa-handshake"></i> Samtykke</a
+            >
+          </li>
+          <li>
+            <a href="skolerute.html"
+              ><i class="fa-regular fa-calendar-check"></i> Skolerute</a
+            >
+          </li>
+          <li>
+            <a href="arsUkeplan.html"
+              ><i class="fa-solid fa-list-ul"></i> Års-/ukeplan</a
+            >
+          </li>
+          <li>
+            <a href="elevsamtaler.html"
+              ><i class="fa-regular fa-message"></i> Elevsamtaler</a
+            >
+          </li>
+          <li>
+            <a href="fagsamtaler.html"
+              ><i class="fa-regular fa-comments"></i> Fagsamtaler</a
+            >
+          </li>
+          <li>
+            <a href="soknader.html"
+              ><i class="fa-regular fa-file-lines"></i> Søknader</a
+            >
+          </li>
+          <li>
+            <a href="info.html"><i class="fa-solid fa-circle-info"></i> Info</a>
+          </li>
+        </ul>
+      </nav>
 
+      <!-- Main Content Area -->
+      <div class="main-content">
+        <!-- Topbar -->
+        <header class="topbar">
+          <div class="topbar-left">
+            <button class="menu-toggle">
+              <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="logo">
+              <span class="logo-icon"
+                ><img
+                  src="akademiet.png"
+                  alt="Akademiet Drammen"
+                  style="width: 100px; height: 40px"
+              /></span>
+            </div>
+          </div>
+
+          <div class="topbar-center">
+            <h1>Innstillinger</h1>
+          </div>
+
+          <div class="topbar-right">
+            <div class="user-profile">
+              <i class="fa-solid fa-circle-user profile-icon"></i>
+              <span class="user-name" id="whoami"></span>
+              <i class="fa-solid fa-chevron-down dropdown-icon"></i>
+
+              <div class="profile-dropdown">
+                <a href="innstillinger.html"
+                  ><i class="fa-solid fa-cog"></i> Innstillinger</a
+                >
+                <a href="index.html">
+                  <img
+                    src="login-xxl-light.png"
+                    alt="Logg ut"
+                    class="logout-icon theme-icon-dark"
+                  />
+                  <img
+                    src="login-xxl-dark.png"
+                    alt="Logg ut"
+                    class="logout-icon theme-icon-light"
+                  />
+                  Logg ut
+                </a>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <main class="content-area">
+          <div class="settings-grid">
+            <section class="dashboard-card settings-card">
+              <div class="settings-card-inner">
+                <div class="card-title-row">
+                  <div class="settings-card-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                  </div>
+                  <div>
+                    <h2>To-faktorpålogging</h2>
+                    <div class="status-pill status-inactive">Ikke aktivert</div>
+                  </div>
+                </div>
+                <p class="settings-card-text">
+                  To-faktorpålogging gir ekstra sikkerhet ved innlogging. Vi
+                  anbefaler å aktivere det for å beskytte kontoen din.
+                </p>
+                <button class="btn-dark btn-block">
+                  Opprett to-faktorkode...
+                </button>
+              </div>
+            </section>
+
+            <section class="dashboard-card settings-card">
+              <div class="settings-card-inner">
+                <div class="card-title-row">
+                  <h2>Endre passord</h2>
+                </div>
+                <div class="settings-card-body">
+                  <div class="form-group">
+                    <label for="currentPassword">Nåværende passord *</label>
+                    <input
+                      id="currentPassword"
+                      type="password"
+                      class="settings-input"
+                      placeholder="Skriv inn nåværende passord"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="newPassword">Nytt passord</label>
+                    <input
+                      id="newPassword"
+                      type="password"
+                      class="settings-input"
+                      placeholder="Skriv inn nytt passord"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="confirmPassword">Gjenta nytt passord</label>
+                    <input
+                      id="confirmPassword"
+                      type="password"
+                      class="settings-input"
+                      placeholder="Gjenta nytt passord"
+                    />
+                  </div>
+                  <div class="password-notes">
+                    <p>Passordet må inneholde:</p>
+                    <ul class="password-rules">
+                      <li class="password-rule">
+                        <i class="fa-solid fa-circle-xmark"></i> Ett tall
+                      </li>
+                      <li class="password-rule">
+                        <i class="fa-solid fa-circle-xmark"></i> Ett spesialtegn
+                      </li>
+                      <li class="password-rule">
+                        <i class="fa-solid fa-circle-xmark"></i> Minst åtte tegn
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="settings-card-footer">
+                  <button class="btn-secondary">Avbryt</button>
+                  <button class="btn-dark">Endre</button>
+                </div>
+              </div>
+            </section>
+
+            <section class="dashboard-card settings-card">
+              <div class="settings-card-inner">
+                <div class="card-title-row">
+                  <div class="settings-card-icon">
+                    <i class="fa-solid fa-key"></i>
+                  </div>
+                  <h2>Passnøkler</h2>
+                </div>
+                <p class="settings-card-text">
+                  Man kan lagre en passnøkkel for enklere innlogging på iSkole.
+                  Denne kan lagres på enheten etter innlogging og vil være et
+                  raskt og sikkert alternativ til innlogging med to-faktor.
+                </p>
+                <p class="settings-card-text">
+                  Ulike enheter (telefon, pc, etc.) har ulike måter å beskytte
+                  passnøklene. Dette kan for eksempel være fingeravtrykk,
+                  ansiktsgjenkjenning eller passord.
+                </p>
+                <p class="settings-card-text">
+                  Produsenter har ulike måter å synkronisere passnøkler mellom
+                  brukerens enheter. F.eks. vil brukere av Mac og iPhone kunne
+                  få sine nøkler synkronisert gjennom iCloud.
+                </p>
+                <button class="btn-dark btn-block">Lagre passnøkkel...</button>
+              </div>
+            </section>
+
+            <section class="dashboard-card settings-card">
+              <div class="settings-card-inner">
+                <div class="card-title-row">
+                  <div class="settings-card-icon">
+                    <i class="fa-solid fa-bell"></i>
+                  </div>
+                  <h2>Varslinger</h2>
+                </div>
+                <p class="settings-card-text">
+                  Varslinger er korte meldinger som sendes til brukere via
+                  nettleseren eller mobilappen. Du kan tillate varslinger for å
+                  bli varslet når du får en ny melding i iSkole uten å være
+                  aktivt tilstede i nettleseren/applikasjonen.
+                </p>
+                <p class="settings-card-text">
+                  Obs! For å motta varslinger på iOS (iPhone) må iSkole være
+                  lagt til på "Hjem-skjerm".
+                </p>
+                <div class="settings-notification-status">
+                  <span class="status-pill status-warning"
+                    >Status: Ikke sjekket</span
+                  >
+                </div>
+                <button class="btn-dark btn-block">Se status</button>
+              </div>
+            </section>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script type="module" src="script.js">
+      const { data: {user} } = await supabase.auth.getUser();
+      if (user) {
+          await refreshAuthUI();
+      } else {
+          window.location.href = "index.html";
+      }
+    </script>
+  </body>
 </html>
